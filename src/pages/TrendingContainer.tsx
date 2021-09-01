@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
 } from "@material-ui/core";
-import { Route, useHistory, Switch } from "react-router-dom";
+import { Route, useHistory, Switch, useLocation } from "react-router-dom";
 import * as RoutePath from "../routes/constants";
 import { makeStyles } from "@material-ui/core/styles";
 import DeveloperList from "./DeveloperList";
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bodyText: {
     color: "#848d96",
+    textAlign:"center",
   },
   barBox: {
     border: "1px #30363d solid",
@@ -52,6 +53,8 @@ const TrendingContainer = () => {
   const classes = useStyles();
   const [btnSelected, setBtnSelected] = useState(selectionType.REPO);
   const history = useHistory();
+  const location = useLocation();
+  console.log(location.pathname);
 
   const getBtnColor = (type: selectionType) =>
     btnSelected === type ? "primary" : "secondary";
@@ -64,6 +67,12 @@ const TrendingContainer = () => {
     setBtnSelected(selectionType.DEV);
     history.push(RoutePath.TRENDING_DEVELOPER)
   };
+
+  useEffect(() => {
+    if(location?.pathname?.includes(RoutePath.TRENDING_DEVELOPER)){
+      setBtnSelected(selectionType.DEV);
+    }
+  }, [])
 
   return (
     <Box mb={6}>

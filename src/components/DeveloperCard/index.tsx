@@ -71,6 +71,7 @@ const DeveloperCard = (props: DeveloperCardProps) => {
       className={classes.container}
       p={2}
     >
+
       <Box display="flex" flex="0.35">
         <Typography className={classes.indextypo}>{index}</Typography>
         <Box mr={1} ml={1}>

@@ -15,6 +15,7 @@ const RepositoryList = () => {
       {isLoading && <Loader/> }
 
       {isError && <ErrorCard/>}
+      {!isLoading && data.legnth === 0 && <ErrorCard title="No Trending Repositories Found"/>}
 
       {!isLoading &&
         data?.map((repo: repoType, index: number) => (

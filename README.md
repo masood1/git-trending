@@ -24,5 +24,5 @@ Note : github load the new page but here it render only list
 #TODO
     - dropdown with api param
     - error boundary
-    - responsivnes
+    - responsivnes - mobile 
     - css polish

@@ -5,6 +5,7 @@ import {
   Typography,
   Button,
   Avatar,
+  Hidden,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as ActionRepo } from "../../assets/icons/actionRepo.svg";
@@ -144,7 +145,11 @@ const RepositoryCard: FunctionComponent<Props> = ({
       >
         <Box display="flex">
           <Button className={classes.btnStar}>
-            <Star className={classes.actionIcon} /> Star
+            <Star className={classes.actionIcon} /> 
+            <Hidden mdDown>
+            Star
+            </Hidden>
+            
           </Button>
         </Box>
         <Typography className={classes.typoCol}>
