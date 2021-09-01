@@ -1,7 +1,7 @@
-import axios from "axios";
+import instance from "./config";
 
 export const getDevelopers = async () => {
-    const response = await axios.get("https://private-anon-5ef7b56b26-githubtrendingapi.apiary-proxy.com/developers?since=monthly");
+    const response = await instance.get("/developers?since=monthly");
     return response.data;
   };
   

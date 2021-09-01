@@ -1,7 +1,6 @@
-import axios from "axios";
+import instance from "./config";
 
 export const getRepositories = async () => {
-    const response = await axios.get("https://private-anon-cbc2a19056-githubtrendingapi.apiary-proxy.com/repositories");
+    const response = await instance.get("/repositories");
     return response.data;
   };
-  

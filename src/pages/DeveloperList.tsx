@@ -1,29 +1,29 @@
 import React from "react";
-import { DeveloperCard } from "../components";
-import { devType } from "../types";
-
-
-const developerMock: devType = {
-    avatar: "",
-    name: "Kunal Kushwaha",
-    repo: {
-      description:
-        "This repository consists of the code samples, assignments, and the curriculum for the Community Classroom complete Data Structures & Algorithms Java bootcamp.",
-      name: "DSA-Bootcamp-Java",
-      url: "www.google.com",
-    },
-    url: "www.google.com",
-    username: "kunal-kushwaha",
-    type:"organization",
-  };
+import { DeveloperCard, ErrorCard, Loader } from "../components";
+import { repoType } from "../types";
+import { useQuery } from "react-query";
+import { getDevelopers } from "../api/getDevelopers";
 
 const DeveloperList = () => {
+  const { data, isLoading, isError } = useQuery(
+    ["developers_trending"],
+    getDevelopers
+  );
+
   return (
     <>
-      <DeveloperCard data={developerMock} index={1} />
-      <DeveloperCard data={developerMock} index={2} />
-      <DeveloperCard data={developerMock} index={3} />
-      <DeveloperCard data={developerMock} index={4} />
+      {isLoading && <Loader />}
+
+      {isError && <ErrorCard />}
+
+      {!isLoading &&
+        data?.map((repo: repoType, index: number) => (
+          <DeveloperCard
+            key={`trending_repo_card_${index}`}
+            data={repo}
+            index={index + 1}
+          />
+        ))}
     </>
   );
 };

@@ -1,9 +1,9 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import { Routes } from "./routes";
-
-import {CssBaseline} from "@material-ui/core";
-import { createTheme  } from "@material-ui/core/styles";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { CssBaseline } from "@material-ui/core";
+import { createTheme } from "@material-ui/core/styles";
 
 const theme = createTheme({
   palette: {
@@ -13,9 +13,9 @@ const theme = createTheme({
     background: {
       default: "#0d1117",
     },
-    text:{
-      secondary:"#848d96",
-    }
+    text: {
+      secondary: "#848d96",
+    },
   },
   typography: {
     h3: {
@@ -26,13 +26,16 @@ const theme = createTheme({
     },
   },
 });
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Routes />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Routes />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
