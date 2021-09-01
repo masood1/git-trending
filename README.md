@@ -1,5 +1,10 @@
 # Mock Implimentation of Github Trending Page  
 
+
+## CI/CD Pipeline is setuped with Vercel
+    -  main branch is pointing production
+## Application is Hosted at 
+
 #TODO
     - dropdown with api param
     - error boundary
