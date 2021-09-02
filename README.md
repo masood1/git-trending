@@ -15,8 +15,15 @@
 API base url is pointing at mocked api response
 const BASE_URL = "https://private-anon-5ef7b56b26-githubtrendingapi.apiary-mock.com/";
 
-
+## Trending Developer Screen
 ![Trending Developer Screen](./docs/images/devscreen.JPG?raw=true "Trending Developer Screen ")
+
+
+## Trending Repository Screen
 ![Trending Repository Screen](./docs/images/repo.JPG?raw=true "Trending Repository Screen ")
-![Error Screen](./docs/images/errir.JPG?raw=true "Error Screen ")
-![DropDown Component](./docs/images/dropdown.JPG?raw=true "DropDown Component")
+
+## Error Screen 
+![Error Screen](./docs/images/error.JPG?raw=true "Error Screen ")
+
+## DropDown Component
+![DropDown Component](./docs/images/dropdown.jpg?raw=true "DropDown Component")
