@@ -18,3 +18,7 @@ export * from "./ErrorCard";
 export { default as Loader } from "./Loader";
 export * from "./Loader";
 
+/* Filter Selection DropDown */
+export { default as FilterDropDown } from "./FilterDropDown";
+export * from "./FilterDropDown";
+

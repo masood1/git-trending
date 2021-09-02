@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Box, Typography } from "@material-ui/core";
 import {
-  Box,
-  Typography,
-} from "@material-ui/core";
-import { Route, useHistory, Switch, useLocation } from "react-router-dom";
+  Route,
+  useHistory,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 import * as RoutePath from "../routes/constants";
 import { makeStyles } from "@material-ui/core/styles";
 import DeveloperList from "./DeveloperList";
 import RepositoryList from "./RepositoryList";
-import { SimpleButton } from "../components";
+import { FilterDropDown, SimpleButton } from "../components";
+import * as Constants from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bodyText: {
     color: "#848d96",
-    textAlign:"center",
+    textAlign: "center",
   },
   barBox: {
     border: "1px #30363d solid",
@@ -32,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#161b22",
     borderBottom: "1px #30363d solid",
     padding: "10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   btnGroup: {
     border: "1.5px #30363d solid",
@@ -43,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 enum selectionType {
   REPO = "Repository",
   DEV = "Developer",
@@ -52,27 +57,30 @@ enum selectionType {
 const TrendingContainer = () => {
   const classes = useStyles();
   const [btnSelected, setBtnSelected] = useState(selectionType.REPO);
+  const [speakingSelection, setSpeakingSelection]: any = useState();
+  const [progLanguage, setProgLanguage]: any = useState();
+  const [dateRange, setDateRange]: any = useState();
+
   const history = useHistory();
   const location = useLocation();
-  console.log(location.pathname);
 
   const getBtnColor = (type: selectionType) =>
     btnSelected === type ? "primary" : "secondary";
 
   const onRepoClick = () => {
     setBtnSelected(selectionType.REPO);
-    history.push(RoutePath.TRENDING)
+    history.push(RoutePath.TRENDING);
   };
   const onDevClick = () => {
     setBtnSelected(selectionType.DEV);
-    history.push(RoutePath.TRENDING_DEVELOPER)
+    history.push(RoutePath.TRENDING_DEVELOPER);
   };
 
   useEffect(() => {
-    if(location?.pathname?.includes(RoutePath.TRENDING_DEVELOPER)){
+    if (location?.pathname?.includes(RoutePath.TRENDING_DEVELOPER)) {
       setBtnSelected(selectionType.DEV);
     }
-  }, [])
+  }, []);
 
   return (
     <Box mb={6}>
@@ -123,14 +131,48 @@ const TrendingContainer = () => {
                 Developers
               </SimpleButton>
             </Box>
+
+            <Box display="flex">
+              {btnSelected === selectionType.REPO && (
+                <FilterDropDown
+                  title="Spoken Language"
+                  heading="Select a spoken language"
+                  labels={Constants.SPEAKING_LANGUAGES}
+                  selectionValue={speakingSelection}
+                  setSelectionValue={setSpeakingSelection}
+                  noSearch
+                />
+              )}
+              <FilterDropDown
+                title="Language"
+                heading="Select a language"
+                labels={Constants.PROG_LANGUAGES}
+                selectionValue={progLanguage}
+                setSelectionValue={setProgLanguage}
+              />
+              <FilterDropDown
+                title="Date range"
+                heading="Adjust time span"
+                labels={Constants.DATE_RANGE}
+                selectionValue={dateRange}
+                setSelectionValue={setDateRange}
+              />
+            </Box>
           </Box>
-          
+
           <Switch>
             <Route exact path={RoutePath.TRENDING}>
-              <RepositoryList />
+              <RepositoryList
+                range={dateRange?.code}
+                speakingCode={speakingSelection?.code}
+                langCode={progLanguage?.code}
+              />
             </Route>
             <Route path={RoutePath.TRENDING_DEVELOPER}>
-              <DeveloperList />
+              <DeveloperList
+                range={dateRange?.code}
+                langCode={progLanguage?.code}
+              />
             </Route>
           </Switch>
         </Box>
