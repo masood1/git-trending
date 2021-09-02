@@ -11,18 +11,11 @@
     -  main branch is pointing production
 ## Application is Hosted at https://git-trending.vercel.app/trending
 
+API base url is pointing at mocked api response
+const BASE_URL = "https://private-anon-5ef7b56b26-githubtrendingapi.apiary-mock.com/";
 
 
-
-
-## Why Nested routes 
-
-as i abserved the routes in github they have nested routes on trending might be they want direct link for developer and repository keeping in that mind i have added nested routes inside trending,
-
-Note : github load the new page but here it render only list
-
-#TODO
-    - dropdown with api param
-    - error boundary
-    - responsivnes - mobile 
-    - css polish
+![Trending Developer Screen](./docs/images/devscreen.JPG?raw=true "Trending Developer Screen ")
+![Trending Repository Screen](./docs/images/repo.JPG?raw=true "Trending Repository Screen ")
+![Error Screen](./docs/images/errir.JPG?raw=true "Error Screen ")
+![DropDown Component](./docs/images/dropdown.JPG?raw=true "DropDown Component")
