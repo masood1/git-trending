@@ -6,6 +6,7 @@
 - Material-UI
 - React-Query
 
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ## CI/CD Pipeline is setuped with Vercel
     -  main branch is pointing production
