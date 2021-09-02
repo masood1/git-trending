@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "#848d96",
       fontWeight: 600,
       "&:hover,&:focus": {
-        color: "#0366d6",
+        color: "#c9d1d9",
       },
       "& span": {
         width: "100%",
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
     textFont: {
       fontSize: "14px",
       fontWeight: "normal",
-      color: "#848d96",
+      // color: "#848d96",
       textAlign: "center",
     },
   })
